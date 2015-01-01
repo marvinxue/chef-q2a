@@ -5,3 +5,7 @@ license 'Apache 2.0'
 description 'Installs/Configures q2a'
 long_description 'Installs/Configures q2a'
 version '0.1.0'
+
+%w(apache2 mysql database).each do |cookbook|
+  depends cookbook
+end

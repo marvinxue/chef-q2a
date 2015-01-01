@@ -9,7 +9,7 @@ platforms:
       box: debian-7-chef
       box_url: http://bit.ly/1weDdiJ
       network:
-        - ['private_network', {ip: '172.28.128.3'}]
+        - ['private_network', {ip: '172.28.128.30'}]
 
 provisioner:
   name: chef_solo
@@ -20,5 +20,7 @@ suites:
     #encrypted_data_bag_secret_key_path: 'test/integration/default/encrypted_data_bag_secret'
     run_list:
       - recipe[q2a::default]
+      - recipe[q2a::database]
+      - recipe[q2a::apps]
     attributes:
       q2a:
