@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-%w(php5-mysql php5-gd).each do |package|
+%w(php-apc php5-mysql php5-gd unzip).each do |package|
   package package do
     action :install
   end
@@ -53,4 +53,11 @@ web_app node['q2a']['apps'] do
   server_name node['q2a']['domain']
   docroot '/var/www/' + node['q2a']['apps']
   cookbook 'apache2'
+end
+
+ark 'language' do
+  url node['q2a']['plugins']['language']
+  path '/var/www/' + node['q2a']['apps'] + '/qa-lang/fr/'
+  owner 'www-data'
+  action :dump
 end
