@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.1.2
+
+script:
+  - bundle exec rubocop
+  - bundle exec tailor
+  - bundle exec foodcritic .
+
+notifications:
+  email:
+    recipients:
+      - leonard.tavae@gmail.com
+    on_success: always
