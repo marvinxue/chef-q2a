@@ -46,6 +46,6 @@ mysql_database_user node['q2a']['admin'] do
   connection mysql_connection_info
   password node['q2a']['password']
   database_name node['q2a']['apps']
-  host 'localhost'
+  host node['q2a']['apps_server']
   action :grant
 end
