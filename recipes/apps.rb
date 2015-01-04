@@ -17,6 +17,9 @@
 # limitations under the License.
 #
 
+node.set['postfix']['main']['inet_protocols'] = 'ipv4'
+node.set['postfix']['main']['smtp_use_tls'] = 'no'
+
 %w(php-apc php5-mysql php5-gd unzip).each do |package|
   package package do
     action :install
@@ -25,6 +28,7 @@ end
 
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_php5'
+include_recipe 'postfix::default'
 
 directory '/var/www/' + node['q2a']['apps'] do
   owner 'www-data'
